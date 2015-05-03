@@ -1,19 +1,22 @@
 all: exit minimum maximum
 
+clean:
+	rm *.o exit minimum maximum
+
 exit.o: exit.s
-	as -o $@ $< 
+	$(AS) -o $@ $< 
 
 exit: exit.o
-	ld -o $@ $< 
+	$(LD) -o $@ $< 
 
 minimum.o: minimum.s
-	as -o $@ $< 
+	$(AS) -o $@ $< 
 
 minimum: minimum.o
-	ld -o $@ $< 
+	$(LD) -o $@ $< 
 
 maximum.o: maximum.s
-	as -o $@ $< 
+	$(AS) -o $@ $< 
 
 maximum: maximum.o
-	ld -o $@ $< 
+	$(LD) -o $@ $< 
