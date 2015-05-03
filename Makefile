@@ -1,7 +1,7 @@
 all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address
 
 clean:
-	rm *.o exit minimum maximum
+	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address
 
 exit.o: exit.s
 	$(AS) -o $@ $< 
