@@ -1,4 +1,4 @@
-all: exit minimum maximum
+all: exit minimum maximum maximum_255
 
 clean:
 	rm *.o exit minimum maximum
@@ -19,4 +19,10 @@ maximum.o: maximum.s
 	$(AS) -o $@ $< 
 
 maximum: maximum.o
+	$(LD) -o $@ $< 
+
+maximum_255.o: maximum_255.s
+	$(AS) -o $@ $< 
+
+maximum_255: maximum_255.o
 	$(LD) -o $@ $< 
