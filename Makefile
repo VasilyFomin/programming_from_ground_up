@@ -1,7 +1,9 @@
-all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address
+AS = as --32
+LD = ld -m elf_i386
+all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power
 
 clean:
-	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address
+	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power
 
 exit.o: exit.s
 	$(AS) -o $@ $< 
@@ -37,4 +39,16 @@ maximum_ending_address.o: maximum_ending_address.s
 	$(AS) -o $@ $< 
 
 maximum_ending_address: maximum_ending_address.o
+	$(LD) -o $@ $< 
+
+hello-world.o: hello-world.s
+	$(AS) -o $@ $< 
+
+hello-world: hello-world.o
+	$(LD) -o $@ $< 
+
+power.o: power.s
+	$(AS) -o $@ $< 
+
+power: power.o
 	$(LD) -o $@ $< 
