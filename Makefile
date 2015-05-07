@@ -1,9 +1,9 @@
 AS = as --32
 LD = ld -m elf_i386
-all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power
+all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum
 
 clean:
-	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power
+	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum
 
 exit.o: exit.s
 	$(AS) -o $@ $< 
@@ -51,4 +51,10 @@ power.o: power.s
 	$(AS) -o $@ $< 
 
 power: power.o
+	$(LD) -o $@ $< 
+
+sum.o: sum.s
+	$(AS) -o $@ $< 
+
+sum: sum.o
 	$(LD) -o $@ $< 
