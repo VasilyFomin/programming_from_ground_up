@@ -1,9 +1,9 @@
 AS = as --32
 LD = ld -m elf_i386
-all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum factorial
+all: exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum factorial toupper heynow
 
 clean:
-	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum factorial
+	rm *.o exit minimum maximum maximum_255 maximum_counter maximum_ending_address hello-world power sum factorial toupper heynow
 
 exit.o: exit.s
 	$(AS) -o $@ $< 
@@ -63,4 +63,16 @@ factorial.o: factorial.s
 	$(AS) -o $@ $< 
 
 factorial: factorial.o
+	$(LD) -o $@ $< 
+
+toupper.o: toupper.s
+	$(AS) -o $@ $< 
+
+toupper: toupper.o
+	$(LD) -o $@ $< 
+
+heynow.o: heynow.s
+	$(AS) -o $@ $< 
+
+heynow: heynow.o
 	$(LD) -o $@ $< 
